@@ -2,19 +2,20 @@
     "id": "nodebb-plugin-aliyun-oss",
     "name": "Aliyun OSS Upload Plugin",
     "description": "A Plugin that uploads images to Aliyun OSS",
-    "url": "https://github.com/justmepzy/nodebb-plugin-aliyun-oss",
+    "url": "https://github.com/pgroot/nodebb-plugin-aliyun-oss",
     "library": "./index.js",
     "staticDirs": {
-        "aliyun-oss": "public"
+        "js": "public/js"
     },
-    "hooks": [
-        { "hook": "action:app.load", "method": "init", "callbacked": true },
-        { "hook": "filter:admin.header.build", "method": "admin.menu", "callbacked": false },
-        { "hook": "filter:admin.create_routes", "method": "admin.route", "callbacked": true },
-        { "hook": "filter:uploadImage", "method": "upload", "callbacked": true, "priority": 6 }
-
+    "scripts": [
+        "public/js/admin.js"
     ],
-    "minver": "0.4.0",
+    "hooks": [
+        { "hook": "static:app.load", "method": "onLoad" },
+        { "hook": "filter:admin.header.build", "method": "admin.menu" },
+        { "hook": "filter:uploadImage", "method": "upload", "priority": 6 }
+    ],
+    "minver": "0.7.0",
     "templates": "./public/templates",
-    "repository": "https://github.com/justmepzy/nodebb-plugin-aliyun-oss"
+    "repository": "https://github.com/pgroot/nodebb-plugin-aliyun-oss"
 }
